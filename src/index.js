@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
-class MyModule extends Component {
+class MyComponent extends Component {
+	static propTypes = {
+		name: PropTypes.string.isRequired
+	}
 	render() {
+		const { name } = this.props;
+
 		return (
 			<div>
-				<div>Hello, {this.props.name}!</div>
+				<div>Hello, {name}!</div>
 			</div>
 		);
 	}
 }
 
-export default MyModule;
+export default MyComponent;
