@@ -23,10 +23,14 @@ $ gulp
 - Browserify for bundling
 - BrowserSync for Live-reload
 - Gulp for provide automated tasks for development
-- Persisfity for Disk caching to improve building time
+- Persistify for Disk caching to improve building time
 - Watchify for Memory caching to improve building time
 - React/ReactDOM
 - babel-plugin-transform-class-properties for support Class properties which really handy with classes!
+
+## Future plans
+- JS uglify. I have some issues on applying uglify with JS Code. I will fix this soon!
+- More options
 
 
 ## Quick Start
@@ -71,5 +75,5 @@ On every updating of index.html or src/test.js will refresh your testing website
 
 
 ## Only 2 tasks?
-This project is still working, and will have more functionalities in future. 
+This project is still working, and will have more functionalities in the future. 
 If you have nice idea to improve this project, please comment at issues or sent me a mail to rico345100@gmail.com. Thanks!
