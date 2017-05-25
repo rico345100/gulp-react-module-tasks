@@ -16,38 +16,13 @@ function swallowError (error) {
 /*********************************************************************************************
  * 
  * 			CLI: $ gulp
- * 			Build distributable React module. Use this before publish!
- * 
- *********************************************************************************************/
-
-gulp.task('default', () => {
-	gutil.log('Building the Component for distribute...');
-
-	return browserify({
-		entries: ['./src/index.js'],
-		standalone: 'my-react-module'
-	})
-	.transform(babelify, {
-		presets: ['es2015', 'react'],
-		plugins: []
-	})
-	.exclude('react')
-	.bundle()
-	.on('error', swallowError)
-	.pipe(source('index.js'))
-	.pipe(gulp.dest('dist'));
-});
-
-
-/*********************************************************************************************
- * 
- * 			CLI: $ gulp test
  * 			Build testing resources and run browser automatically with live-reload
  * 
  *********************************************************************************************/
 
-gulp.task('test', () => {
-	gutil.log('Run testing component...');
+gulp.task('default', () => {
+	gutil.log('Run React module development tasks...');
+	gutil.log(`Type '$ gulp build' to generate distributable module via NPM.`);
 
 	browserSync.init({
 		server: './'
@@ -76,4 +51,29 @@ gulp.task('test', () => {
 	}
 
 	return bundle();
+});
+
+/*********************************************************************************************
+ * 
+ * 			CLI: $ gulp build
+ * 			Build distributable React module. Use this before publish!
+ * 
+ *********************************************************************************************/
+
+gulp.task('build', () => {
+	gutil.log('Building the Component for distribute...');
+
+	return browserify({
+		entries: ['./src/index.js'],
+		standalone: 'my-react-module'
+	})
+	.transform(babelify, {
+		presets: ['es2015', 'react'],
+		plugins: ['transform-class-properties']
+	})
+	.exclude('react')
+	.bundle()
+	.on('error', swallowError)
+	.pipe(source('index.js'))
+	.pipe(gulp.dest('dist'));
 });

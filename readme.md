@@ -39,7 +39,8 @@ $ gulp
 $ npm install
 ```
 
-- Second, run gulp. (If you didn't installed gulp globally, you should install gulp globally first)
+- Second, run gulp. (If you didn't installed gulp globally, you should install gulp globally first). This step will transpile all JavaScript files in ./src directory and run BrowserSync.
+
 ```bash
 $ gulp
 ```
@@ -50,18 +51,11 @@ $ gulp
 
 
 ## Tasks
-### default task
-Default Task build your React Component for distribute. 
-It means exclude all react-related dependencies and adding UMD support with browserify --standalone option.
+## Default Task
+In the previous gulp-react-module-tasks, default task was build distributable module. From 1.1.0, it's now replaced to development task, which build all source scripts and run BrowserSync to debug.
+Original default task is now changed to build task. See 'build task' to detail.
 
-```bash
-$ gulp
-```
-
-built script will located to ./dist directory as index.js, and package.json has './dist/index.js' as main script. So now you can publish your own module to NPM!
-
-### test task
-test task build your application with existing test codes that located in same source directory './src/test.js'.
+Default task build your application with existing test codes that located in same source directory './src/test.js'.
 This task is useful for testing your React Component is working fine with production state.
 Only one thing that you should careful about is you have to load your component like this:
 
@@ -72,6 +66,17 @@ import MyComponent from './index';
 After run this task, gulp builds script that contains React and your Component with test.js, and results to './test/test.js',
 also it runs browser-sync to provide live-reloading.
 On every updating of index.html or src/test.js will refresh your testing website that supported by browser-sync.
+
+
+## Build Task
+Build Task build your React Component for distribute, via NPM of course. 
+It means that exclude all react-related dependencies and adding UMD support with browserify --standalone option.
+
+```bash
+$ gulp build
+```
+
+built script will located to ./dist directory as index.js, and package.json has './dist/index.js' as main script. So now you can publish your own module to NPM!
 
 
 ## Only 2 tasks?

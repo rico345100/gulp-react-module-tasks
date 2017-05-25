@@ -1,6 +1,6 @@
 {
   "name": "gulp-react-module-tasks",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Common tasks for create react modules with Gulp + Browserify",
   "main": "./dist/index.js",
   "scripts": {
